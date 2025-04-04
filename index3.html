@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animasi Gambar</title>
+  <style>
+    .animate-img {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      animation: move 5s linear infinite;
+    }
+
+    @keyframes move {
+      0% { left: 0; }
+      100% { left: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <img class="animate-img" src="https://via.placeholder.com/100" alt="Gambar Bergerak">
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gambar Bergerak di Pojok Kanan</title>
+  <style>
+    body {
+      height: 200vh; /* Biar ada scroll */
+      background-color: lightgray;
+    }
+
+    .animate-img {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 100px;
+      height: 100px;
+      animation: moveUpDown 2s infinite alternate ease-in-out;
+    }
+
+    @keyframes moveUpDown {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+  <img class="animate-img" src="https://via.placeholder.com/100" alt="Gambar Bergerak">
+</body>
+</html>
