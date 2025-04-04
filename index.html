@@ -10,19 +10,30 @@
     
 <!-- 01 Navigation Split -->
 <nav class="navigation-split">
-    <div class="nav-left">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Menu Kue</a></li>
-            <li><a href="#">Tentang Kami</a></li>
-            <li><a href="#">Kontak</a></li>
-        </ul>
-    </div>
     <div class="logo">Toscia</div>
+  
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  
+    <div class="nav-menu" id="navMenu">
+      <div class="nav-left">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Menu Kue</a></li>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+
     <div class="nav-right">
         <button class="btn-masuk">Masuk</button>
-    </div>
-</nav>
+      </div>
+  </nav>
+  
 
     <!-- 02 Hero Section -->
     <section class="hero">
@@ -187,3 +198,10 @@
 </body>
 </html>
 
+<script>
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('active');
+    }
+  </script>
+  

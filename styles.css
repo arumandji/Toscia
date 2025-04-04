@@ -5,6 +5,9 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+* {
+    box-sizing: border-box;
+}
 
 /* Warna dasar */
 :root {
@@ -13,6 +16,46 @@
     --text-color: #333; /* Warna teks */
     --background-color: #fffaf0; /* Latar belakang krem */
 }
+
+@media screen and (max-width: 768px) {
+    .navbar ul {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+  
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+  
+    .hero img {
+      width: 100%;
+      height: auto;
+    }
+  
+    .about {
+      padding: 20px;
+      text-align: center;
+    }
+  
+    .about-content {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .about img {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    .services {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+
 
 /* Body */
 body {
@@ -88,6 +131,134 @@ body {
 .nav-right .btn-masuk:hover {
     background-color: #105b5e; /* Darker shade on hover */
 }
+
+
+/* Hamburger button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Responsive menu */
+@media (max-width: 768px) {
+    .navigation-split {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hamburger {
+        display: flex;
+        position: absolute;
+        left: 20px;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 0;
+    }
+
+    .nav-right {
+        position: absolute;
+        right: 20px;
+        padding-top: 0;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--secondary-color);
+        padding: 20px 5%;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-left ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-left, .nav-right {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--secondary-color);
+        padding: 20px 5%;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-left ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-right {
+        margin-left: 0;
+        padding-top: 15px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-left, .nav-right {
+        margin: 0;
+        width: 100%;
+    }
+
+    .logo {
+        position: relative;
+        left: auto;
+        transform: none;
+        margin: 0 auto;
+    }
+}
+
+
 
 /* Hero Section */
 .hero {
@@ -166,17 +337,18 @@ body {
 }
 
 /* feature-list-left */
-.feature-list-left {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px 5%;
-    gap: 30px;
-    flex-wrap: wrap;
-    background-color: #fffaf0;
-    position: relative; /* Menggunakan relative untuk pengaturan posisi overlay */
-    max-height: 500px; /* Menyesuaikan tinggi minimum */
-}
+    .feature-list-left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 5%;
+        gap: 30px;
+        flex-wrap: wrap;
+        background-color: #fffaf0;
+        position: relative;
+        min-height: 400px; /* Lebih fleksibel */
+    }
+    
 
 .feature-list-content {
     display: flex;
@@ -190,7 +362,7 @@ body {
 .feature-list-text {
     flex: 1;
     text-align: left;
-    max-width: 50%;
+    max-width: 500px;
     padding: 20px; /* Memberikan ruang di sekitar teks */
     padding-top: 0%;
 }
@@ -198,32 +370,31 @@ body {
 .feature-list-text h2 {
     margin-bottom: 10px;
     color: var(--primary-color);
-    padding-left: 100px;
+    padding: 0 20px; /* Memberikan ruang di sekitar judul */
 }
 
 .feature-list-text ul {
     list-style: none;
-    padding-left: 100px;
+    padding: 0 20px; /* Memberikan ruang di sekitar daftar */
     font-size: 1rem;
 }
 
 .feature-list-images {
     flex: 1;
     position: relative; /* Menggunakan relative untuk penataan posisi gambar */
-    width: 100%;
+    max-width: 500px; /* Membatasi lebar gambar */
     height: auto; /* Mengatur gambar agar proporsional */
 }
 
 /* Styling gambar bunga */
 .flower-overlay {
     position: absolute;
-    width: 100%; /* Ukuran gambar diatur agar proporsional */
-    height: 100%; /* Ukuran gambar diatur agar proporsional */
-    opacity: 0.3; /* Transparansi untuk efek overlay */
-    mix-blend-mode: multiply; /* Menyatukan warna dengan latar belakang */
-    pointer-events: none; /* Agar gambar tidak mengganggu interaksi dengan elemen lainnya */
-    right: 5px; /* Posisi gambar overlay lebih jauh ke kanan */
-    bottom: 80px; /* Posisi gambar overlay lebih jauh ke bawah */
+    width: 300px;
+    height: auto;
+    opacity: 0.15;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
 }
 
 /* Responsif */
@@ -235,10 +406,21 @@ body {
     }
 
     .flower-overlay {
-        width: 100%; /* Menyesuaikan ukuran gambar overlay di layar kecil */
-        height: auto; /* Menjaga proporsi gambar */
-        right: 30px; /* Menyesuaikan posisi gambar overlay */
-        bottom: 10px; /* Menyesuaikan posisi gambar overlay */
+        width: 200px;
+        bottom: 10px;
+        right: 10px;
+    }
+    .feature-list-left {
+        flex-direction: column;
+        align-items: center;
+    }
+    .feature-list-images {
+        max-width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+    .feature-list-text ul {
+        padding: 0;
     }
 }
 
@@ -559,4 +741,23 @@ body {
     border-radius: 10px; /* Membulatkan sudut */
 }
 
+@media screen and (max-width: 768px) {
+    /* Aturan buat layar kecil (HP & tablet) */
+    .container {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .navbar {
+      display: none; /* misal sembunyikan navbar di mobile */
+    }
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 auto;
+      }      
+  }
 
+
+  
