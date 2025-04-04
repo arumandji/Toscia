@@ -17,6 +17,15 @@
     --background-color: #fffaf0; /* Latar belakang krem */
 }
 
+section {
+    width: 100%;
+    max-width: 1200px; /* Supaya nggak terlalu lebar di layar besar */
+    margin: 0 auto; /* Tengahin semua section */
+    padding: 50px 5%; /* Padding biar nggak terlalu mentok */
+    box-sizing: border-box; /* Biar padding nggak nambah lebar */
+}
+
+
 @media screen and (max-width: 768px) {
     .navbar ul {
       flex-direction: column;
@@ -386,14 +395,23 @@ body {
     height: auto; /* Mengatur gambar agar proporsional */
 }
 
+.feature-list-images img {
+    width: 100%; /* Biar responsif */
+    max-width: 300px; /* Sesuaikan ukuran biar seragam */
+    height: auto; /* Biar nggak gepeng */
+    object-fit: cover; /* Biar gambar tetap proporsional */
+    display: block; /* Hindari whitespace tambahan */
+    margin: 0 auto; /* Tengahin gambar */
+}
+
 /* Styling gambar bunga */
 .flower-overlay {
     position: absolute;
-    width: 300px;
-    height: auto;
+    width: 50px;
+    max-width: 150px;
     opacity: 0.15;
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    bottom: 20px;
     pointer-events: none;
 }
 
@@ -418,6 +436,9 @@ body {
         max-width: 100%;
         padding: 20px;
         text-align: center;
+    }
+    .feature-list-images img {
+        max-width: 200px; /* Kalau di HP, gambarnya nggak kegedean */
     }
     .feature-list-text ul {
         padding: 0;
@@ -512,7 +533,6 @@ body {
     }
 }
 
-/* Feature Quote Left */
 .feature-quote-left {
     display: flex;
     align-items: center;
@@ -525,36 +545,38 @@ body {
 
 .feature-quote-left blockquote {
     font-style: italic;
-    font-size: 1.2rem; /* Ukuran font lebih kecil */
+    font-size: 1.2rem;
     color: var(--text-color);
     flex: 1;
-    margin-right: 20px; /* Jarak antara quote dan gambar */
-    margin-left: 20px; /* Memberikan jarak kiri agar tidak terlalu mepet */
-    max-width: 600px; /* Membatasi lebar quote agar tidak terlalu lebar */
+    margin: 0 20px; /* Biar simetris */
+    max-width: 600px;
 }
 
 .feature-quote-images {
-    position: right;
-    flex-shrink: 0;
+    position: relative;
+    width: 220px; /* Biar nggak melebar */
+    height: 250px; /* Atur tinggi sesuai kebutuhan */
 }
 
 .feature-quote-images img {
-    position: absolute;
-    margin-right: 250px; /* Memberikan jarak kanan agar tidak terlalu mepet */
-    width: 200px; /* Ukuran foto lebih kecil */
+    width: 200px;
     height: auto;
     border-radius: 10px;
     object-fit: cover;
+    position: absolute;
 }
 
 .feature-quote-images .image-top {
     top: 0;
     right: 0;
+    z-index: 2; /* Biar di atas */
+    transform: rotate(-5deg); /* Kasih efek miring dikit */
 }
-
 .feature-quote-images .image-bottom {
-    top: 20px; /* Jarak tumpang tindih */
-    right: 20px;
+    top: 20px; /* Geser ke bawah dikit */
+    right: 20px; /* Geser kanan dikit */
+    z-index: 1; /* Biar di bawah */
+    opacity: 0.8; /* Kasih efek transparan dikit */
 }
 
 /* Responsif */
@@ -569,14 +591,25 @@ body {
     }
 
     .feature-quote-images {
-        position: relative;
-        margin-top: 20px;
+        width: 180px;
+        height: 200px;
     }
 
     .feature-quote-images img {
-        width: 300px; /* Ukuran lebih kecil pada mobile */
+        width: 170px;
+    }
+
+    .feature-quote-images .image-top {
+        top: 0;
+        right: 0;
+    }
+
+    .feature-quote-images .image-bottom {
+        top: 15px;
+        right: 15px;
     }
 }
+
 
 /* Testimonial Quote */
 .testimonial-quote {
@@ -744,8 +777,10 @@ body {
 @media screen and (max-width: 768px) {
     /* Aturan buat layar kecil (HP & tablet) */
     .container {
-      flex-direction: column;
-      padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
   
     .navbar {
